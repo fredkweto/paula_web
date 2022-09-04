@@ -1,0 +1,309 @@
+{% extends "layout.html" %}
+
+{% block content %}
+        <!--middle content-->
+<div id="container">
+    <div class="container">
+        <div class="row">
+            <!--left sidebar---->
+            <aside class="col-sm-3 left-sidebar">
+                <div class="box category">
+                    <div class="box-heading">
+                        <h3>Account <i class="fa fa-angle-up"></i></h3>
+                    </div>
+
+                    <div class="box-content test">
+                        <div class="box-category">
+                            <ul class="menu">
+                                <li><a>Login</a></li>
+                                <li><a href="{{url_for('register')}}">Register</a></li>
+                                <li><a>Forgotten Password</a></li>
+                                <li><a>My Account</a></li>
+                                <li><a>Address Books</a></li>
+                                <li><a>Wish List</a> </li>
+                                <li><a>Order History</a> </li>
+                                <li><a>Downloads</a></li>
+                                <li><a>Reward Points</a></li>
+                                <li><a>Returns</a></li>
+                                <li><a>Transactions</a> </li>
+                                <li><a>Newsletter</a></li>
+                                <li><a>Recurring payments</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </aside>
+            <!--end sidebar-->
+
+            <!--main content-->
+            <div class="col-sm-9" id="content"><ul class="breadcrumb">
+                    <li><a href="home.html"><i class="fa fa-home"></i></a></li>
+                    <li><a>Register</a></li>
+                </ul>
+                <h2>Register Account</h2>
+                <p>If you already have an account with us, please login at the 
+                    <a href="{{  url_for('login') }}">login page</a>.</p>
+                <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    <fieldset id="account">
+                        <legend>Your Personal Details</legend>
+                        <div style="display: none;" class="form-group required">
+                            <label class="col-sm-4 control-label">Customer Group</label>
+                            <div class="col-sm-8">
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" checked="checked" value="1" name="">
+                                        Default</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            {{ form.first.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.first.label(class="form-control-label") }}
+                                {% if form.first.errors %}
+                                    {{ form.first(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.first.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.first(class="form-control form-control-lg") }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group required">        
+                            {{ form.last.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.last.label(class="form-control-label") }}
+                                {% if form.last.errors %}
+                                    {{ form.last(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.last.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.last(class="form-control", id="input-lastname", placeholder="Last Name") }}
+                                {% endif %}                           
+                            </div>
+                        </div>
+
+                        <div class="form-group required">              
+                            {{ form.email.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.email.label(class="form-control-label") }}
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control", id="input-email", placeholder="E-mail") }}
+                                {% endif %}                           
+                            </div>
+                        </div>
+
+                        <div class="form-group required">                  
+                            {{ form.telephone.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.telephone.label(class="form-control-label") }}
+                                {% if form.telephone.errors %}
+                                    {{ form.telephone(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.telephone.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.telephone(class="form-control", id="input-telephone", placeholder="+25423456789") }}          
+                                {% endif %}                           
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.mobile.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.mobile.label(class="form-control-label") }}
+                                {% if form.mobile.errors %}
+                                    {{ form.mobile(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.mobile.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.mobile(class="form-control", id="input-fax", placeholder="+25423456789") }}                   
+                                {% endif %}                  
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <fieldset id="address">
+                        <legend>Your Address</legend>
+                        <div class="form-group">                     
+                            {{ form.company.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.company.label(class="form-control-label") }}
+                                {% if form.company.errors %}
+                                    {{ form.company(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.company.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.company(class="form-control", id="input-company", placeholder="Company") }}
+                                {% endif %}                   
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            {{ form.address1.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.address1.label(class="form-control-label") }}
+                                {% if form.address1.errors %}
+                                    {{ form.address1(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.address1.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.address1(class="form-control", id="input-address-1", placeholder="Address 1") }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.address2.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.address2.label(class="form-control-label") }}
+                                {% if form.address2.errors %}
+                                    {{ form.address2(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.address2.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.address2(class="form-control", id="input-address-2", placeholder="Address 2") }}
+                                {% endif %}
+                                </div>
+                        </div>
+
+                        <div class="form-group required">          
+                            {{ form.city.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.city(class="form-control", id="input-city", placeholder="City") }}
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            {{ form.post_code.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.post_code(class="form-control", id="input-postcode", placeholder="Post Code") }}
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            {{ form.country.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.country(class="form-control", id="input-country", placeholder="--- Please Select ---") }}                      
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            {{ form.town.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.town(class="form-control", id="input-zone", placeholder="--- Please Select ---") }}
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Your Password</legend>
+
+                        <div class="form-group required">
+                            {{ form.password.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.password.label(class="form-control-label") }}
+                                {% if form.password.errors %}
+                                    {{ form.password(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.password(class="form-control", id="input-password", placeholder="Password") }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            {{ form.confirm_password.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {{ form.confirm_password.label(class="form-control-label") }}
+                                {% if form.confirm_password.errors %}
+                                    {{ form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.confirm_password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.confirm_password(class="form-control", id="input-confirm", placeholder="Confirm Passsword") }}
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <fieldset>
+                        <legend>Newsletter</legend>
+                        <div class="form-group">
+                            {{ form.newsletter.label(class="col-sm-4 control-label") }}
+                            <div class="col-sm-8">
+                                {% if form.newsletter.errors %}
+                                {{ form.newsletter(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid feedback">
+                                    {% for error in form.newsletter.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                    {{ form.newsletter(class="radio-inline") }}
+                                {% endif %}
+
+                               
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="buttons">
+                        <div class="pull-right">I have read and agree to the <a class="agree"><b>Privacy Policy</b></a> 
+                                {% if form.privacy.errors %}
+                                    {{ form.privacy(class="is-invalid") }}
+                                    <div class="invalid feedback">
+                                        {% for error in form.privacy.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.privacy(style="vertical-align:text-bottom") }}
+                                {% endif %}
+                            &nbsp;
+                            {{ form.submit(class="btn btn-custom")}}
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+            <!--end main content-->
+        </div>
+    </div>
+</div>
+        <!--End of middle content-->
+{% endblock content %}

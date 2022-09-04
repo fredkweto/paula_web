@@ -1,0 +1,51 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+<div id="container">
+    <div class="container">
+        <div class="row">
+            <!--left sidebar---->
+            <aside  class="col-sm-3 left-sidebar">
+                <div class="box category">
+                    <div class="box-heading">
+                        <h3>Categories <i class="fa fa-angle-up"></i></h3>
+                    </div>
+
+                    <div class="box-content test">
+                        <div class="box-category">
+                            <ul class="menu">
+                                <li><a href="{{ url_for('antic_images') }}" class="custom_hover">Antic images</a></li>
+                                <li><a href="{{ url_for('Drawing') }}" class="custom_hover">Drawing</a>
+                                <li><a href="{{ url_for('New_Media') }}" class="custom_hover">New Media</a></li>
+                                <li><a href="{{ url_for('Painting') }}" class="custom_hover">painting</a></li>
+                                <li><a href="{{ url_for('Fine_Art') }}" class="custom_hover">Fine art</a></li>
+                                <li><a href="{{ url_for('Photography') }}" class="custom_hover">Photography</a></li>
+                                <li><a href="{{ url_for('Decorative_Art') }}" class="custom_hover">Decorative art</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--end sidebar-->
+            <!-- main -->
+            <div id="content" class="col-sm-9">
+                <form method="POST" class="form-group" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    {{ form.name.label }}
+                    <p>{{ form.name(class="form-control",placeholder="Your name", autofocus=true) }}</p>
+                    {{ form.email.label }}
+                    <p>{{ form.email(class="form-control", placeholder="Your email") }}</p>
+                    {{ form.phone.label }}
+                    <p>{{ form.phone(class="form-control", placeholder="Your phone number") }}</p>
+                    {{ form.order.label }}
+                    <p>{{ form.order(class="form-control") }}</p>
+                    {{ form.message.label }}
+                    <p>{{ form.message(class="form-control", placeholder="Your message to us", autofocus=true) }}</p>
+                    <p>{{form.submit(class="btn btn-custom")}}</p>
+                </form>
+            </div>
+            <!-- endmain -->
+        </div>
+    </div>
+</div>
+{% endblock content %}

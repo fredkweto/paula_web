@@ -1,0 +1,105 @@
+{%  extends "layout.html" %}
+
+{% block content %}
+<div id="container">
+    <div class="container">
+        <div class="row">
+            <aside  class="col-sm-3 left-sidebar">
+                <div class="box category">
+                    <div class="box-heading">
+                        <h3>Categories <i class="fa fa-angle-up"></i></h3>
+                    </div>
+                    <div class="box-content test">
+                        <div class="box-category">
+                            <ul class="menu">
+                                <li><a href="{{ url_for('antic_images') }}" class="custom_hover">Antic images</a></li>
+                                <li><a href="{{ url_for('Drawing') }}" class="custom_hover">Drawing</a>
+                                <li><a href="{{ url_for('New_Media') }}" class="custom_hover">New Media</a></li>
+                                <li><a href="{{ url_for('Painting') }}" class="custom_hover">painting</a></li>
+                                <li><a href="{{ url_for('Fine_Art') }}" class="custom_hover">Fine art</a></li>
+                                <li><a href="{{ url_for('Photography') }}" class="custom_hover">Photography</a></li>
+                                <li><a href="{{ url_for('Decorative_Art') }}" class="custom_hover">Decorative art</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Special Side category -->
+                <!-- <div class="box special">
+                    <div class="box-heading">
+                        <h3>Special</h3>
+                    </div>
+                    <div class="box-content">
+                        <div class="product-layout">
+                            <ul class="list-unstyled">
+                            {% for item in special.items %}
+                                <li>
+                                    <div class="product-thumb transiction">
+                                        <a class="compare-button"><i class="fa fa-retweet"></i></a>
+                                        <a class="wishlist-button"><i class="fa fa-heart-o"></i></a>
+                                        <div class="image"><a href="#"><img src="static\web_images\{{ item.image }}" class="img-responsive"></a></div>
+                                        <div class="caption">
+                                            <div class="product-name"><a>{{ item.image_name }}</a></div>
+                                            <div class="price">
+                                                <span class="price-new">{{ item.price }}</span>
+                                                <span class="price-old"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-button">
+                                            <a class="btn btn-add-cart" href="#">
+                                                <span>
+                                                    Place Order </span>
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+            </aside>
+            <!-- <section id="gtco-welcome" class="bg-white section-padding">
+                <div class="container">
+                    <div class="section-content">
+                        <div class="row">
+                            <div class="col-sm-5 img-bg d-flex shadow align-items-center justify-content-center justify-content-md-end img-2" style="background-image: url(img/hero-2.jpg);">
+                                
+                            </div> -->
+                        <div class="col-sm-9" id="content">
+                            <ul class="breadcrumb">
+                                <li><a href="{{url_for('home')}}"><i class="fa fa-home"></i></a></li>
+                                <li><a>About Us</a></li>
+                            </ul>
+                            <div >
+                                <div class="heading-section pl-lg-5 ml-md-5">
+                                    <h2>
+                                        Welcome to Amor Arts Collection
+                                    </h2>
+                                </div>
+                                <div class="pl-lg-5 ml-md-5">
+                                    <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
+                                    <!-- <h3 class="mt-5">Special Recipe</h3> -->
+                                    <div class="banner-image-block row">
+                                        {% for image in lower.items %}
+                                            <div class="col-sm-4 col-xs-12">
+                                                <div class="product-thumb transiction">
+                                                    <div class="banner-image">
+                                                        <a href="{{ url_for('gallery') }}"><img src="static\web_images\{{ image.image }}" class="img-responsive"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- </div>
+                    </div>
+                </div> -->
+            <!-- </section> -->
+
+ 
+{% endblock content %}

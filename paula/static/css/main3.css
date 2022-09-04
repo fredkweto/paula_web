@@ -1,0 +1,21 @@
+.l_side {
+    border: rgb(239, 240, 241);
+    border-style:solid;
+    padding: 10px;
+    border-radius: 7px;
+    margin-top: 30px;
+}
+
+.cntr_cont {
+    max-width: 50%;
+    max-height: 50%;
+}
+.image_s {
+    width: auto;
+    height: 30rem;
+    padding-left: 12rem;
+    padding-top: 2rem;
+}
+p {
+    padding-left: 12rem;
+}

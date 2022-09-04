@@ -1,0 +1,46 @@
+{% for item in gallery.items  %} 
+    {% if loop.first %}
+        <div class="col-sm-2 col-xs-12"><img class="img-thumbnail" src="static\web_images\{{ item.image }}"></div>
+        <div class="col-sm-10 col-xs-12"><p>
+                {{ item.image_desc }}</p>
+        </div>
+    {% endif %}
+{% endfor  %}
+
+@app.route("/cart")
+def cart():
+    return render_template('cart.html')
+
+
+@app.route("/checkout")
+def checkout():
+    return render_template('checkout.html')
+
+
+@app.route("/product-list")
+def product_list():
+    return render_template('product-list.html')
+
+
+@app.route("/single-product")
+def single_product():
+    return render_template('single-product.html')
+
+
+@app.route("/login")
+def login():
+    return render_template('login.html')
+
+
+@app.route("/register")
+def register():
+    return render_template('register.html')
+
+@app.route("/input_form")
+def backend():
+    return render_template('backend.html')
+
+@app.route("/layout")
+def layout():
+    return render_template('layout.html')
+

@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+
+{% block content %}
+        <!--middle content-->
+<div id="container">
+    <div class="container">
+        <div class="row">
+            <!--left sidebar---->
+            <aside  class="col-sm-3 left-sidebar">
+                <div class="box category">
+                    <div class="box-heading">
+                        <h3>Categories <i class="fa fa-angle-up"></i></h3>
+                    </div>
+                    <div class="box-content test">
+                        <div class="box-category">
+                            <ul class="menu">
+                                <li><a href="{{ url_for('antic_images') }}" class="custom_hover">Antic images</a></li>
+                                <li><a href="{{ url_for('Drawing') }}" class="custom_hover">Drawing</a>
+                                <li><a href="{{ url_for('New_Media') }}" class="custom_hover">New Media</a></li>
+                                <li><a href="{{ url_for('Painting') }}" class="custom_hover">painting</a></li>
+                                <li><a href="{{ url_for('Fine_Art') }}" class="custom_hover">Fine art</a></li>
+                                <li><a href="{{ url_for('Photography') }}" class="custom_hover">Photography</a></li>
+                                <li><a href="{{ url_for('Decorative_Art') }}" class="custom_hover">Decorative art</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special Side category -->
+                <div class="box special">
+                    <div class="box-heading">
+                        <h3>Special</h3>
+                    </div>
+                    <div class="box-content">
+                        <div class="product-layout">
+                            <ul class="list-unstyled">
+                            {% for item in special.items %}
+                                <li>
+                                    <div class="product-thumb transiction">
+                                        <a class="compare-button"><i class="fa fa-retweet"></i></a>
+                                        <a class="wishlist-button"><i class="fa fa-heart-o"></i></a>
+                                        <div class="image"><a href="#"><img src="static\web_images\{{ item.image }}" class="img-responsive"></a></div>
+                                        <div class="caption">
+                                            <div class="product-name"><a>{{ item.image_name }}</a></div>
+                                            <div class="price">
+                                                <span class="price-new">{{ item.price }}</span>
+                                                <span class="price-old"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-button">
+                                            <a class="btn btn-add-cart" href="{{ url_for('contact') }}">
+                                                <span>
+                                                    Place Order </span>
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--end sidebar-->
+
+            <!--main content-->
+            <div class="col-sm-9" id="content">         
+                <ul class="breadcrumb">
+                    <li><a href="{{url_for('home')}}"><i class="fa fa-home"></i></a></li>
+                    <li><a>{% block legend %} {{ legend }} {% endblock legend %}</a></li>
+                </ul>
+                <h2>{{ gallery.image_name }}</h2>
+                <div class="row ref-search">
+                    <div class="col-sm-2 col-xs-12"><img class="img-thumbnail" src="static\web_images\{{ gallery.image }}"></div>
+                    <div class="col-sm-10 col-xs-12"><p>
+                            {{ gallery.image_desc }}</p>
+                    </div> 
+                </div>
+
+             <h3>What we have for you under {{ legend }}!</h3>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="ref-search">
+                            <li><a>Paint soft</a></li>
+                            <li><a>Paint overlay</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-filter clearfix">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="input-sort" class="control-label">Sort By:</label>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-control" id="input-sort">
+                                <option selected="selected">Default</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="input-limit" class="control-label">Show:</label>
+                        </div>
+                        <div class="col-md-3" >
+                            <select class="form-control" id="input-limit">
+                                <option selected="selected" >All</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2 text-right" style="margin-top: 5px;">
+                            <div class="button-view">
+                                <a  class="" id="list-view" href="#"><i class="fa fa-th-list"></i></a>
+                                <a  class="active" id="grid-view"><i class="fa fa-th"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-cat-top clearfix">
+                    <div class="pull-left"></div>
+                    <div class="pull-left result-page">Showing Images</div>
+                    <div class="pull-right">
+
+                        <a class="btn special-button" id="compare-total">
+                            <span>Product Compare</span>
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="row product-gallery-block">           
+                    <!-- Middle Images  -->
+                    {% for item in gallery.items %}
+                    <div class="product-layout product-grid col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                        <div class="product-thumb">
+                            <div class="image">
+                                <a href="{{url_for('home')}}"><img class="img-responsive" src="static\web_images\{{ item.image }}"></a></div>
+                            <div>
+                                <div class="caption">
+                                    <h4><a href="{{url_for('home')}}">{{ item.image_name }}</a></h4>
+                                    <p>
+                                        {{ item.image_desc }}</p>
+                                    <p class="price">
+                                        <span class="price-new">{{ item.price }}</span> <span class="price-old"></span>
+                                        <span class="price-tax"></span>
+                                    </p>
+                                </div>
+                                <div class="button-group">
+                                    <a class="btn special-button" href="{{url_for('contact')}}"><i class="fa fa-shopping-cart"></i> <span>Place Order</span></a>
+                                    <button class="btn special-button" type="button"><i class="fa fa-heart"></i></button>
+                                    <button class="btn special-button" type="button"><i class="fa fa-exchange"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {%  endfor %}
+            </div>
+            <!--end main content-->
+        </div>
+        <center>
+        <div class="container">
+            <div class="row">
+                <ul>
+                    {% for page_num in gallery.iter_pages(left_edge=1, right_edge=1, left_current=1,right_current=2) %}
+                        {% if page_num %}
+                            {% if gallery.page == page_num %}
+                                <a class="btn btn-outline-info mb-4 disabled" href="{{ url_for('gallery', page=page_num) }}">{{ page_num }}</a>
+                            {% else %}
+                                <a class="btn btn-outline-info mb-4" href="{{ url_for('gallery', page=page_num) }}">{{ page_num }}</a>
+                            {% endif %}
+                        {% else %}
+                            ...
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </center>
+    </div>
+</div>
+        <!--End of middle content-->
+{% endblock content %}
+ 

@@ -1,0 +1,98 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+<aside  class="col-sm-3 left-sidebar">
+    <div class="box category">
+        <div class="box-heading">
+            <h3>Categories <i class="fa fa-angle-up"></i></h3>
+        </div>
+        <div class="box-content test">
+            <div class="box-category">
+                <ul class="menu">
+                    <li><a href="{{ url_for('antic_images') }}" class="custom_hover">Antic images</a></li>
+                    <li><a href="{{ url_for('Drawing') }}" class="custom_hover">Drawing</a>
+                    <li><a href="{{ url_for('New_Media') }}" class="custom_hover">New Media</a></li>
+                    <li><a href="{{ url_for('Painting') }}" class="custom_hover">painting</a></li>
+                    <li><a href="{{ url_for('Fine_Art') }}" class="custom_hover">Fine art</a></li>
+                    <li><a href="{{ url_for('Photography') }}" class="custom_hover">Photography</a></li>
+                    <li><a href="{{ url_for('Decorative_Art') }}" class="custom_hover">Decorative art</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="box special">
+        <div class="box-content">
+            <div class="product-layout">
+                <ul class="list-unstyled">
+            </div>
+        </div>
+    </div>
+</aside>
+<div id="content" class="col-sm-9">
+    <div class="items-container">
+        <div class="form-container">
+            <form class="pad-r" method="POST" action="" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <h2> {{ legend }}</h2>
+                <p>{{ form.image_name.label() }}</p>
+                    {% if form.image_name.errors %}
+                        {{ form.image_name() }}
+                        <div class="invalid feedback">
+                            {% for error in form.image_name.errors %}
+                                <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>{{ form.image_name(class="form-control",placeholder="Name of Image", autofocus=true) }}</p>
+                    {% endif %}
+                <p>{{ form.image_desc.label }}</p>
+                <p>{{ form.image_desc(class="form-control",placeholder="Description of the Image", autofocus=true) }}</p>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Kshs.</span>
+                    <div class="form-floating">
+                        {{ form.price(class="form-control",placeholder="1200", autofocus=true) }}
+                        {{ form.price.label }}
+                    </div>
+                </div>
+            
+                <h4>{{ form.category.label }}</h4>
+                <p>{{ form.category }}</p>
+                <h4>{{ form.group.label }}</h4>
+                <p>{{ form.group }}</p>
+                <p>{{ form.image }}</p>
+                <p>{{ form.submit }}</p>
+            </form>
+        </div>
+        <div class="pad-r">
+            <h2>Manage Your Images</h2>
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>Image</th>
+                    <th>Image name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                </tr>
+                {% for item in images.items %}
+                    <tr>
+                        <td class="c6"><img class="img-thumbnail" src="static\web_images\{{ item.image }}" alt="" border=5 height=80 width=80 ></td>
+                        <td class="c1">{{item.image_name}}</td>
+                        <td class="c2">{{item.image_desc}}</td>
+                        <td class="c3"><span>{{item.price}}</span></td>
+                        <td class="c4"><span>{{item.category}}</span></td>
+                        <td class="c6"><a href="{{ url_for('update', post_id=item.id) }}"><button class="update-btn">Update</button></a></td>
+                        <td class="c6"><a href="{{ url_for('delete_post', post_id=item.id) }}"><button class="delete-btn">Delete</button></a></td>
+                        <!-- <div class="image-size">
+                            <td><img src="static\web_images\{{ item.image }}"></td>
+                        </div> -->
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

@@ -1,0 +1,201 @@
+{% extends "layout.html" %}
+
+{% block content %}
+        <!--middle content-->
+<div id="container">
+    <div class="container">
+        <div class="row">
+            <!--left sidebar---->
+            <aside  class="col-sm-3 left-sidebar">
+                <div class="box category">
+                    <div class="box-heading">
+                        <h3>Categories <i class="fa fa-angle-up"></i></h3>
+                    </div>
+
+                    <div class="box-content test">
+                        <div class="box-category">
+                            <ul class="menu">
+                                <li><a href="{{ url_for('antic_images') }}" class="custom_hover">Antic images</a></li>
+                                <li><a href="{{ url_for('Drawing') }}" class="custom_hover">Drawing</a>
+                                <li><a href="{{ url_for('New_Media') }}" class="custom_hover">New Media</a></li>
+                                <li><a href="{{ url_for('Painting') }}" class="custom_hover">painting</a></li>
+                                <li><a href="{{ url_for('Fine_Art') }}" class="custom_hover">Fine art</a></li>
+                                <li><a href="{{ url_for('Photography') }}" class="custom_hover">Photography</a></li>
+                                <li><a href="{{ url_for('Decorative_Art') }}" class="custom_hover">Decorative art</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="box special">
+                    <div class="box-heading">
+                        <h3>Special</h3>
+                    </div>
+                    <div class="box-content">
+                        <div class="product-layout">
+                            <ul class="list-unstyled">
+                            {% for image in special.items %}
+                                <li>
+                                    <div class="product-thumb transiction">
+                                        <a class="compare-button"><i class="fa fa-retweet"></i></a>
+                                        <a class="wishlist-button"><i class="fa fa-heart-o"></i></a>
+                                        <div class="image"><a href="{{ url_for('gallery') }}"><img src="static\web_images\{{ image.image }}" class="img-responsive"></a></div>
+                                        <div class="caption">
+                                            <div class="product-name"><a href="{{ url_for('gallery') }}">{{ image.image_name }}</a></div>
+                                            <div class="price">
+                                                <span class="price-new">{{ image.price }}</span>
+                                                <span class="price-old"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-button">
+                                            <a class="btn btn-add-cart" href="{{ url_for('contact') }}">
+                                                <span>
+                                                    Place Order </span>
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                                
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--end sidebar-->
+
+            <!--main content-->
+            <div id="content" class="col-sm-9">
+                <!--slidder--->
+                <div class="slidder">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="item active">
+                                <img src="static/images/banner1.jpg" class="img-responsive" alt="1">
+                            </div>
+
+                            <div class="item">
+                                <img src="static/images/banner2.jpg" class="img-responsive" alt="2">
+                            </div>
+
+                            <div class="item">
+                                <img src="static/images/banner3.jpg" class="img-responsive" alt="3">
+                            </div>
+
+                            <div class="item">
+                                <img src="static/images/banner4.jpg" class="img-responsive" alt="4">
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <i class="fa fa-chevron-left"></i>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <i class="fa fa-chevron-right"></i>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!--banner images-->
+                <div class="banner-image-block row">
+                    {% for image in lower.items %}
+                        <div class="col-sm-4 col-xs-12">
+                            <div class="product-thumb transiction">
+                                <div class="banner-image">
+                                    <a href="{{ url_for('gallery') }}"><img src="static\web_images\{{ image.image }}" class="img-responsive"></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="clearfix"></div>
+                <!--end banner images-->
+
+                <!---featured image-->
+                <div class="box featured-product featured-product-heading">
+                    <div class="box-heading">
+                        <h3>Featured Products</h3>
+                    </div>
+                    <div class="box-content">
+                        <div class="row">
+                            {% for image in featured.items %}
+                            <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="product-thumb transiction">
+                                    <a class="compare-button"><i class="fa fa-retweet"></i></a>
+                                    <a class="wishlist-button"><i class="fa fa-heart-o"></i></a>
+                                    <div class="image"><a href="{{ url_for('gallery') }}"><img src="static\web_images\{{ image.image }}" class="img-responsive"></a></div>
+                                    <div class="caption">
+                                        <div class="product-name"><a href="{{ url_for('gallery') }}">{{ image.image_name}}</a></div>
+                                        <div class="price">
+                                            <span class="price-new">{{ image.price }}</span>
+                                            <span class="price-old"></span>
+                                        </div>
+                                    </div>
+                                    <div class="cart-button">
+                                        <a class="btn btn-add-cart" href="{{ url_for('contact') }}">
+                                            <span>
+                                                Place Order </span>
+                                            <i class="fa fa-shopping-cart"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                <div class="clearfix"></div>
+                <!---end featured image-->
+
+                <!---best seller image-->
+                <div class="box bestsell-product bestsell-product-heading">
+                    <div class="box-heading">
+                        <h3>Best seller</h3>
+                    </div>
+                    <div class="box-content">
+                        <div class="row">
+                            {% for image in bestseller.items %}
+                                <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                    <div class="product-thumb transiction">
+                                        <a class="compare-button"><i class="fa fa-retweet"></i></a>
+                                        <a class="wishlist-button"><i class="fa fa-heart-o"></i></a>
+                                        <div class="image"><a href="{{ url_for('gallery') }}"><img src="static\web_images\{{ image.image }}" class="img-responsive"></a></div>
+
+                                        <div class="caption">
+                                            <div class="product-name"><a href="{{ url_for('gallery') }}">{{ image.image_name }}</a></div>
+                                            <div class="price">
+                                                <span class="price-new">{{ image.price }}</span>
+                                                <span class="price-old"></span>
+                                            </div>
+                                        </div>
+                                        <div class="cart-button">
+                                            <a  class="btn btn-add-cart" href="{{ url_for('contact') }}">
+                                                <span>
+                                                    Place Order </span>
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <!---end best seller image-->
+            </div>
+            <!--end main content-->
+        </div>
+    </div>
+</div>
+        <!--End of middle content-->
+{% endblock content %}
